@@ -8,7 +8,7 @@ all: librmrf.a
 librmrf.a: src/rmrf.o
 
 rmrf: test/test.o
-	$(CXX) -o $@ $^ -lrmrf $(CXXFLAGS)
+	$(CXX) -o $@ $^ -lrmrf $(CXXFLAGS) -L .
 
 src/rmrf.o: src/rmrf.cpp src/rmrf.hpp
 
