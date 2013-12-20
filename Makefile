@@ -1,5 +1,7 @@
 RM=rm -f
 
+CPPFLAG += -Isrc
+
 all: librmrf.a
 
 librmrf.a: src/rmrf.o
