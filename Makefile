@@ -7,7 +7,7 @@ all: librmrf.a
 
 librmrf.a: src/rmrf.o
 
-test: test/test.o
+rmrf: test/test.o
 	$(CXX) -o $@ $^ -lrmrf $(CXXFLAGS)
 
 src/rmrf.o: src/rmrf.cpp src/rmrf.hpp
