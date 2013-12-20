@@ -62,8 +62,8 @@ bool rmrf(const std::string& directory)
 		struct stat info;
 		if (stat(entity.data(), &info) != 0)
 			return false;
-		int rv = (S_ISDIR(info.st_mode)) ? rmrf(entity) : unlink(entity.data());
-		if (rv != 0)
+		bool rv = (S_ISDIR(info.st_mode)) ? rmrf(entity) : (unlink(entity.data()) == 0);
+		if (!rv)
 			return false;
 	}
 
