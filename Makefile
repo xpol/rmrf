@@ -19,9 +19,8 @@ tests/test.o: tests/test.cpp src/rmrf.hpp
 
 
 test: tests/rmrf
-	cd tests
-	bash run.sh
-	cd ..
+	$(cd tests/ ; bash ./run.sh)
+	
 
 clean:
 	$(RM) src/rmrf.o tests/test.o
