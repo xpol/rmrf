@@ -20,7 +20,8 @@ tests/test.o: tests/test.cpp src/rmrf.hpp
 
 test: tests/rmrf
 	cd tests
-	run.sh
+	./run.sh
+	cd ..
 
 clean:
 	$(RM) src/rmrf.o tests/test.o
