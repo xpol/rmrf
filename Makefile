@@ -1,6 +1,7 @@
 RM=rm -f
 
-CPPFLAG += -Isrc
+INCLUDES = -I src
+CXXFLAGS = -g -Wall ${INCLUDES}
 
 all: librmrf.a
 
