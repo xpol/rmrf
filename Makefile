@@ -17,10 +17,14 @@ src/rmrf.o: src/rmrf.cpp src/rmrf.hpp
 
 tests/test.o: tests/test.cpp src/rmrf.hpp
 
+.PHONY: test
 
-test: tests/rmrf
-	$(cd tests/ ; bash ./run.sh)
-	
+test:
+	@echo "Running tests..."
+	bash ./tests/setup.sh
+	./tests/rmrf target
+	@! [ -d target ]
+	@echo "Pass"
 
 clean:
 	$(RM) src/rmrf.o tests/test.o
