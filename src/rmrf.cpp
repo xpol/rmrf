@@ -68,7 +68,7 @@ bool rmrf(const std::string& directory)
 	}
 
 	closedir(d);
-	return rmdir(path) == 0;
+	return rmdir(directory.data()) == 0;
 }
 
 #endif
