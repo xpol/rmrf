@@ -1,14 +1,17 @@
 RM=rm -f
 
-INCLUDES = -I src
-CXXFLAGS = -g -Wall ${INCLUDES}
+INCLUDES = -Isrc
+LOADLIBES = -L./
+CXXFLAGS = -g -Wall -static ${INCLUDES}
 
-all: librmrf.a
+all: rmrf
 
 librmrf.a: src/rmrf.o
+	$(AR) rcs $@ $^
 
-rmrf: test/test.o
-	$(CXX) -o $@ $^ -lrmrf $(CXXFLAGS) -L .
+rmrf: test/test.o librmrf.a
+	$(CXX) -o $@ $^ -lrmrf $(CXXFLAGS) $(LOADLIBES)
+
 
 src/rmrf.o: src/rmrf.cpp src/rmrf.hpp
 
@@ -18,4 +21,4 @@ clean:
 	$(RM) src/rmrf.o test/test.o
 
 dist-clean: clean
-	$(RM) librmrf.a test
+	$(RM) librmrf.a rmrf rmrf.exe
