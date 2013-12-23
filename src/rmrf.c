@@ -1,5 +1,6 @@
 #include "rmrf.h"
 #ifdef _MSC_VER
+#include <stdlib.h>
 #include <string.h>
 #include <windows.h>
 #include <shellapi.h>
@@ -8,20 +9,21 @@
 wchar_t* u8towstring(const char* utf8)
 {
 	wchar_t* wcs;
-	int req = MultiByteToWideChar(CP_UTF8, 0, utf8, -1), NULL, 0);
-	wcs = malloc(req+2);
+	int req = MultiByteToWideChar(CP_UTF8, 0, utf8, -1, NULL, 0);
+	wcs = malloc(sizeof(*wcs)*(req+1));
 	if (!wcs)
 		return NULL;
         
 	MultiByteToWideChar(CP_UTF8, 0, utf8, -1, wcs, req);
-		wcs[req+1] = L'\0'; // extra zero is needed by SHFileOperation.
+	wcs[req] = L'\0'; // extra zero is needed by SHFileOperation.
+
 	return wcs;
 }
 
 int rmrf(const char* directory)
 {
     int rv;
-	wchar_t wdirectory = u8towstring(directory);
+	wchar_t* wdirectory = u8towstring(directory);
 
 	SHFILEOPSTRUCT fileop;
 	fileop.hwnd = NULL;    // no status display
