@@ -2,7 +2,7 @@ RM=rm -f
 
 INCLUDES = -Isrc
 LOADLIBES = -L./
-CXXFLAGS = -g -Wall -static ${INCLUDES}
+CFLAGS = -g -Wall -static ${INCLUDES}
 
 all: tests/rmrf
 
@@ -10,16 +10,16 @@ librmrf.a: src/rmrf.o
 	$(AR) rcs $@ $^
 
 tests/rmrf: tests/test.o librmrf.a
-	$(CXX) -o $@ $^ -lrmrf $(CXXFLAGS) $(LOADLIBES)
+	$(CC) -o $@ $^ -lrmrf $(CFLAGS) $(LOADLIBES)
 
 
-src/rmrf.o: src/rmrf.cpp src/rmrf.hpp
+src/rmrf.o: src/rmrf.c src/rmrf.h
 
-tests/test.o: tests/test.cpp src/rmrf.hpp
+tests/test.o: tests/test.c src/rmrf.h
 
 .PHONY: test
 
-test:
+test: all
 	@echo "Running tests..."
 	bash ./tests/setup.sh
 	./tests/rmrf target
