@@ -12,7 +12,7 @@ end
 local shell = {}
 function shell.mkdirs(p)
   if isWindows then
-    os.execute('md '..p)
+    os.execute('md "'..p..'"')
   else
     os.execute('mkdir -p '..p)
   end
@@ -20,7 +20,7 @@ end
 
 function shell.rmdirs(p)
   if isWindows then
-    os.execute('rd /Q /S '..p)
+    os.execute('rd /Q /S "'..p..'"')
   else
     os.execute('rm -rf '..p)
   end
