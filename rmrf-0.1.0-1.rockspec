@@ -2,7 +2,7 @@ package = "rmrf"
 version = "0.1.0-1"
 local v = version:gsub("%-%d", "")
 source = {
-  url = "https://github.com/xpol/rmrf.git",
+  url = "git://github.com/xpol/rmrf.git",
   tag="v"..v
 }
 description={
