@@ -12,8 +12,7 @@ description={
    license = "MIT"
 }
 dependencies = {
-  "lua >= 5.1",
-  "luafilesystem >= 1.5.0"
+  "lua >= 5.1"
 }
 
 build = {
