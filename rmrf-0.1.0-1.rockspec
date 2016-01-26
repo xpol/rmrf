@@ -7,7 +7,7 @@ source = {
 }
 description={
    summary = "A `mkdir -p` module for Lua.",
-   detailed = "A `mkdir -p` module for Lua.",
+   detailed = "A `mkdir -p` module for Lua works on Windows, Linux and Mac OS.",
    homepage = "http://github.com/xpol/rmrf.lua",
    license = "MIT"
 }

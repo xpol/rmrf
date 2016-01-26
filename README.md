@@ -6,6 +6,8 @@ rmrf
 
 A `rm -rf` for C/C++ and Lua.
 
+It works on Windows, Linux and Mac OS.
+
 ## C/C++
 
 Just drop the `src/rmrf.c` and `src/rmrf.h` into you project and you are on board.
