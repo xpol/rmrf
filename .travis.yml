@@ -1,5 +1,35 @@
 language: c
-compiler:
-  - gcc
-  - clang
-script: make && make test
+
+sudo: false
+
+env:
+  global:
+    - LUAROCKS=2.3.0
+  matrix:
+    - LUA=lua5.1
+    - LUA=lua5.2
+    - LUA=lua5.3
+    - LUA=luajit2.0
+    - LUA=luajit2.1
+
+branches:
+  only:
+    - master
+
+before_install:
+  # Install Lua and setup env.
+  - source .scripts/setenv_lua.sh
+  # Install testing dependency
+  - luarocks install busted
+
+install:
+  - luarocks make
+
+# Run tests
+script:
+  - busted
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
