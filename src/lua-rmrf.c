@@ -33,7 +33,12 @@ static int rmrf_meta_call(lua_State* L)
 LUALIB_API int luaopen_rmrf(lua_State *L)
 {
     lua_createtable(L, 0, sizeof(apis)/sizeof(apis[0]) - 1); // module table
-    luaL_register(L, NULL, apis);
+
+#if LUA_VERSION_NUM >= 502 // LUA 5.2 or above
+	luaL_setfuncs(L, apis, 0);
+#else
+	luaL_register(L, NULL, apis);
+#endif
 
     lua_createtable(L, 0, 1); // metatable
 
