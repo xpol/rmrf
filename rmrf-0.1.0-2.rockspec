@@ -1,5 +1,5 @@
 package = "rmrf"
-version = "0.1.0-1"
+version = "0.1.0-2"
 local v = version:gsub("%-%d", "")
 source = {
   url = "git://github.com/xpol/rmrf.git",
