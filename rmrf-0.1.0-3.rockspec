@@ -1,13 +1,13 @@
 package = "rmrf"
-version = "0.1.0-2"
+version = "0.1.0-3"
 local v = version:gsub("%-%d", "")
 source = {
   url = "git://github.com/xpol/rmrf.git",
   tag="v"..v
 }
 description={
-   summary = "A `mkdir -p` module for Lua.",
-   detailed = "A `mkdir -p` module for Lua works on Windows, Linux and Mac OS.",
+   summary = "A `rm -rf` module for Lua.",
+   detailed = "A `rm -rf` module for Lua works on Windows, Linux and Mac OS.",
    homepage = "http://github.com/xpol/rmrf",
    license = "MIT"
 }
